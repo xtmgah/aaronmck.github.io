@@ -1,0 +1,11 @@
+---
+layout: post
+title:  "Motivation more than anything"
+date:   2012-12-31 14:56:10
+categories: motivation personal
+---
+I ended up chasing a series of links today from two excellent blogs, first from the [Endeavour](http://www.johndcook.com/blog/2012/12/29/extreme-change-is-easier/?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+TheEndeavour+%28The+Endeavour%29) and then to Lienhard’s [blog at UH](http://www.uh.edu/engines/epi1322.htm).  The basic message was about motivation, expressed in a couple of examples.  Both posts are really worth a read and have some great stories.  The quote that impressed me the most though was “The longer I live, the surer I am that none of us is that much smarter than the next person. But some of us do get motivated.”
+
+I couldn’t agree more.   Growing up, it seemed like people’s capacity was solely ascribed to their intelligence.  Either you were a smart kid or not, and it was something you were born with and was unchangeable.  As I get older, I realize more and more that there’s actually a pretty narrow band of intelligence out there.  Outside of extreme intellectual disability and true genius, people just aren’t that different in terms of intelligence.  What really matters, and what you see in successful people all around you, is motivation.  “Smart people” have simply worked really hard to know the world (or at least their piece).
+
+So how to do you get motivated? This dovetails with a great conversation I had with a friend a couple of months ago.  He’s really interested in changing the current system of surgical education, and has spent a bunch of time reading up on self-determination theory, something that made a lot of sense to me.  The basic premise is that motivation is primarily internal, and we’re driven by what we feel we have power over, how we’re supported, and what we feel we’re good at.  This is counterintuitive  we expect external motivations like money or other incentives to drive up (Check out the [wikipedia page](http://en.wikipedia.org/wiki/Self-determination_theory) for a lot more information).  Regardless, I’m cycling right now on how to integrate this into the new year.    How do I impact my motivation for the new year?  How do you keep motivated?

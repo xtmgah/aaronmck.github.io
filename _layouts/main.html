@@ -1,0 +1,27 @@
+{% include header.html %}
+
+<div class="container">
+  <div class="header">
+    <ul class="nav nav-pills pull-right">
+      <li class="active"><a href="#">Home</a></li>
+      <li><a href="/about/">About</a></li>
+      <li><a href="/contact/">Contact</a></li>
+    </ul>
+    <h3 class="text-muted">Gaint's shoulders</h3>
+  </div>
+
+  <div class="row marketing">
+    <div class="col-lg-6">
+      <table id="waypointsTable" width=680>
+	{% for post in site.posts %}
+	<tr><td><a href="{{ post.url }}">{{ post.title }}</a></td><td class="tdcolor" align="right">{{ post.date | date: "%-d %B %Y" }}</td></tr>
+	{% endfor %}
+      </table>
+    </div>
+    <div class="footer">
+      <p>&copy; Aaron McKenna 2014</p>
+    </div>
+
+  </div> <!-- /container -->
+
+{% include footer.html %}

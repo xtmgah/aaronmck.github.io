@@ -1,0 +1,9 @@
+---
+layout: post
+title:  "Bayesian Inference Is Everywhere?"
+date:   2013-09-28 14:56:10
+categories: Bayesian Inference
+---
+I follow the NFL just enough to hold a two minute elevator conversation.  I think this is a byproduct of living in Boston for so many years: you need to know just enough about every sports season to make small talk (though I can talk for hours on the Red Sox).  Anyway, the easiest way to stay up-to-date for the NFL is [Bill Simmons’ podcast](http://espn.go.com/espnradio/podcast/archive?id=2864045), and [NFL power rankings](http://espn.go.com/nfl/powerrankings).  
+
+Back to the point: If you look at power rankings week after week, you notice something.  For instance, the top 1-2 team (10th) is eight points above the lowest 2-1(18th) this week. Clearly there’s something else at play.  The rankers assume something about each team: they have a prior belief about the strength of the team before the season starts.  They then update the rankings, taking into account this prior belief updated with the weekly performance of the team.  Pretty classic Bayesian inference.  I know it’s a simple example, but it’s always good to have a deck of these when explaining Bayesian statistics to non-math oriented people. 

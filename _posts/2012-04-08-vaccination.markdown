@@ -1,0 +1,45 @@
+---
+layout: post
+title:  "Vaccination schedule and infant mortality"
+date:   2012-05-17 14:56:10
+categories: vaccination
+---
+So, despite my best efforts, I got sucked into a debate about the ever popular pseudo-science story of vaccinations and <insert your favorite neurologic / developmental disease> the other day with a friend.   Although there’s a huge number of great articles and publications on the subject (the CDC has a nice page here), some people aren’t convinced.  Regardless, this post isn’t about the general controversy; I’m not really interested in being the ten-thousandth scientist (or wanna-be in this case) to ramble on against ignorance on this topic.  What this post is about is a particular piece of evidence that my friend cited in his argument, that for some reason I couldn’t let go of.
+
+Here’s the journal article: [Miller et. al., Hum Exp Toxicol. 2011 (free, open access)](http://www.ncbi.nlm.nih.gov/pmc/articles/PMC3170075/)
+
+The high level summary of the article is that there exists a correlation between the number of vaccines children receive (or at least the scheduled vaccinations) per country and that countries infant mortality rate (IMR).  Although the statement is looser than the autism is caused by vaccinations argument, many people will (and do) interpret this as proof that vaccinations are at least doing something seriously wrong (in this case something very wrong, killing children).  This is all based on a linear regression between the infant mortality rates (per country) and the countries vaccination schedules (using 33 country based points).  So… let’s see how it holds up.
+
+
+So, as always in bioinformatics, pre-processing the data is 90%+ of the work, I downloaded their data and processed it into readable files.  I then input it into R (cleaned data tables are available here):
+
+{% highlight R %}
+
+# load up their data
+their.imr <- read.delim("their_table.txt",strip.white=T,stringsAsFactors=F,header=T)
+their.vac <- read.delim("their_vaccination_schedules.txt",strip.white=T,stringsAsFactors=F,header=T)
+total.table <- merge(their.imr,their.vac,by.x="Country",by.y="Nation")
+total.table <- total.table[order(total.table$Total.doses),]
+
+{% endhighlight %}
+Let’s see if we can recreate their plot:
+{% highlight R %}
+
+library(ggplot2)
+ln.md = lm(total.table$Total.doses~total.table$IMR) 
+g = ggplot(total.table,aes(IMR,Total.doses,label=Country)) + geom_point() 
+g = g + geom_text(size=4,vjust=-0.3) + theme_bw() 
+g = g + geom_abline(slope=ln.md$coefficients[2],intercept=ln.md$coefficients[1]) 
+g + opts(title=paste("Country IMR rate by vacination count (correlation of ~",signif(cor(total.table$Total.doses,total.table$IMR),2),")")) + xlab("Infant Mortality Rate") + ylab("Vacination Count")
+
+{% endhighlight %}
+
+Which comes out looking pretty much like they presented, with a correlation of about 0.7 (it’s more like 0.65, but not the worst overstatement ever), and a quick correlation test shows there are wide CIs, representing a correlation between marginal and strong, but again with so few data points, and a p value as they reported ( < 0.0001, something around 3.7 x10-5). OK, so what they presented isn’t on it’s face incorrect.
+
+
+Taking a step back though, the paper’s approach seems to reek of selective statistics:
+
+- Why were only countries which had a lesser infant mortality rate than the US chosen?  This seems ripe for bias: imagine that each country with a lesser IMR than the US had greater access to health care, higher per-capita income, or a lesser prevalence of childhood diseases.  You could imagine all (or any) of these factors having a great effect on IMR than vaccination schedule.  Looking through the list, it’s generally a collection of first world nations with universal health care.
+
+So it would be nice to do two more things.  First lets see if the correlation hold up across all countries with data (if not then there may be a larger factor at play), and secondly lets see if some other factor correlates with IMR in a more resounding way than vaccination schedule.  If boredom strikes again it would be fun to see how this holds up…
+

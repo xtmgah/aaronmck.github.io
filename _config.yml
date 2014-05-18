@@ -1,0 +1,11 @@
+# Site settings
+title: Aaron's little home on the web
+email: aaronmck@uw.edu
+description: "A former software engineer who now does some combination of genomics, computational biology, and genome engineering."
+baseurl: ""
+url: "http://aaronmck.github.io"
+
+# Build settings
+markdown: kramdown
+permalink: pretty
+paginate: 5

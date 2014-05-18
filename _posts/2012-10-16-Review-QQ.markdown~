@@ -1,0 +1,10 @@
+---
+layout: post
+title:  "Reviewing QQ plots"
+date:   2012-10-16 14:56:10
+categories: pseudo fake msf flu
+---
+
+Q-Q plots aren’t always the easiest plots for people to grasp (at least initially), but once they’ve gotten the hang of it Q-Q’s are one of the best ways to display p-values and the like.  I was recently putting together a couple of slides about some results, and I needed a good introduction to point geneticists to.  The best intro by far I could find was from UMich, which offers a great walk-through:
+
+http://genome.sph.umich.edu/wiki/Bar_Harbor_Statistical_Genetics_Workshop

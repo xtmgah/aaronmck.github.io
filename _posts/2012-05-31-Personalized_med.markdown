@@ -1,0 +1,7 @@
+---
+layout: post
+title:  "Personalized medicine"
+date:   2012-05-31 14:56:10
+categories: personalized medicine
+---
+If you’re in the genetics field, the term personalized medicine rings of overuse.  Every genetic and genomics discovery seems to have some profound implication for the future of personalized medicine.  Although treatments from the human genome projects and other projects which followed have been [few and far between](http://www.nytimes.com/2010/06/13/health/research/13genome.html?pagewanted=all), the diagnostic power of new advanced in genetics has come much further, especially in terms of tackling rare mendelian disorders.  What popped this into my head was a recent [Gizmodo article](http://gizmodo.com/5914305/hunting-down-my-sons-killer) about a families journey to discover the source of their sons rare genetic disorder.   In summary they found the causal gene (NGLY1) which is great to hear, but there are two other great things about the article.   First, it’s written by the father, a computer science professor at the University of Utah, who walks through the perfect amount of background on genetics for the general public to grasp the major concepts (which isn’t an easy thing to do) without being too dry.  Secondly, none of what was accomplished in the story would of been possible five to ten years ago.  Whole exome sequencing their family wasn’t even a thought ten years ago, and now the costs are nearing the practical threshold of $1000 per person.  Pretty cool!
