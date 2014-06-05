@@ -1,0 +1,15 @@
+---
+layout: post
+title:  "Assessing Genome assemblies"
+date:   2014-06-05 14:58:10
+categories: assembly genome scaffolds contigs
+---
+
+Evaluating the quality of a final genome assembly is a hard and generally unsolved puzzle.  It's not a problem of quantification; 
+the problem is determining which of these quantities matter and by how much.  
+
+ideas to talk about:
+metrics
+mapping back
+CEGMA
+REAPR
