@@ -6,7 +6,7 @@ categories: climbing rainier moutaineering
 ---
 It was finally meant to be as we got good weather and great conditions, and we got to the top of Rainier.
 We took the DC route, which was amazingly well maintained and in perfect shape (late June is a great choice).  
-Having tried the mountain twice before, I definitely benified from the learning process (e.g. previous mistakes).  
+Having tried the mountain twice before, I definitely benefited  from the learning process (e.g. previous mistakes).  
 The standard gear list applies, which you can find on almost any site like [IMG's youtube video](https://www.youtube.com/watch?v=9wuqS3V2umY)
 or [in list form](http://www.mountainguides.com/rainier-gear.shtml).  My biggest changes this time were to:
 
