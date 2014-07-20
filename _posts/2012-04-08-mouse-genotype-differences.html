@@ -1,0 +1,112 @@
+<html>
+   <head>
+    
+   <style>
+      body {
+       font: 10px sans-serif;
+      }
+
+      rect.bordered {
+        stroke: #E6E6E6;
+        stroke-width:0.2px;   
+      }
+   </style>
+   </head>
+   <body>
+      <div id='heatmap'></div>
+
+      <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
+      <script src="data.json" charset="utf-8"></script>
+   <script type="text/javascript">
+   
+//height of each row in the heatmap
+//width of each column in the heatmap
+var gridSize = 10,
+    h = gridSize,
+    w = gridSize,
+    rectPadding = 5;
+var legendElementWidth = gridSize*2;
+var buckets = 21;
+var boxheight = gridSize*66;
+var legendElementWidth = gridSize*2.5;
+var maxValue = d3.max(data, function (d) { return d.value; })
+var chromeSpacer = gridSize*(17 + 7)
+var margin = {top: 40, right: 80, bottom: 30, left: 50},
+    width = 5000 - margin.left - margin.right,
+    height = 800 - margin.top - margin.bottom;
+colors = ['#005824','#1A693B','#347B53','#4F8D6B','#699F83','#83B09B','#9EC2B3','#B8D4CB','#D2E6E3','#EDF8FB','#FFFFFF','#F1EEF6','#E6D3E1','#DBB9CD','#D19EB9','#C684A4','#BB6990','#B14F7C','#A63467','#9B1A53','#91003F'];
+var colorScale = d3.scale.quantile()
+              .domain([0, maxValue])
+              .range(colors);
+      
+var svg = d3.select("#heatmap").append("svg")
+    .attr("width", width + margin.left + margin.right)
+    .attr("height", height + margin.top + margin.bottom)
+  .append("g")
+    .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+var heatMap = svg.selectAll(".heatmap")
+    .data(data, function(d) { return d.variableCount + ':' + d.bin; })
+  .enter().append("svg:rect")
+    .attr("x", function(d) { return (d.variableCount * w + 30) + ((d.contig - 1) * chromeSpacer); })
+    .attr("y", function(d) { return d.contigBin * h; })
+    .attr("width", function(d) { return w; })
+    .attr("height", function(d) { return h; })
+    .attr("class", "hour bordered")
+    .style("fill", function(d) { return colorScale(d.value); });
+
+heatMap.transition().duration(1000)
+              .style("fill", function(d) { return colorScale(d.value); });
+
+heatMap.append("title").text(function(d) { return d.value; });
+
+var rowLabels = svg.append("g")
+      .selectAll(".rowLabelg")
+      .data(data)
+      .enter()
+      .append("text")
+      .filter(function(d){ return d.variableCount == 1; })
+      .text(function (d) { return d.both; })
+    .attr("x", function(d) { return (d.variableCount + 40) + ((d.contig - 1) * chromeSpacer); })
+    .attr("y", function(d) { return d.contigBin * h; })
+    .style("text-anchor", "end")
+      .attr("transform", "translate(-6," + gridSize + ")")
+      ;
+
+var colLabels = svg.append("g")
+      .selectAll(".colLabelg")
+      .data(data)
+      .enter()
+      .append("text")
+      .text(function (d) { return d.variable; })
+      .filter(function(d){ return d.contigBin == 1; })
+    .attr("y", function(d) { return ((1+d.variableCount) * w + 30) + ((d.contig - 1) * chromeSpacer); })
+    .attr("x", function(d) { return -5; })
+    .style("text-anchor", "start")
+      .attr("transform", "translate(-6," + gridSize + ")")
+      .attr("transform", function(d) {return "rotate(-90)" })
+      ;
+
+var legend = svg.selectAll(".legend")
+      .data([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
+      .enter().append("g")
+      .attr("class", "legend");
+ 
+  legend.append("rect")
+    .attr("x", function(d, i) { return legendElementWidth * i; })
+    .attr("y", boxheight + (gridSize*2))
+    .attr("width", legendElementWidth)
+    .attr("height", gridSize)
+    .style("fill", function(d, i) { return colors[i]; });
+ 
+ var zero = d3.format("04d");
+  legend.append("text")
+    .attr("class", "mono")
+    .text(function(d) { return d3.round(d * (maxValue/buckets)); })
+    .attr("width", legendElementWidth)
+    .attr("y", function(d, i) { return (legendElementWidth * -1 * i) - 10; })
+    .attr("x", boxheight + (gridSize*4))
+    .attr("transform", function(d) {return "rotate(90)" });
+   </script>
+   </body>
+</html>
