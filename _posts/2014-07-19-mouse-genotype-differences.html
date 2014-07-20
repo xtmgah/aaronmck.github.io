@@ -14234,9 +14234,16 @@ var legend = svg.selectAll(".legend")
       .enter().append("g")
       .attr("class", "legend");
  
+  var textLabels = text
+                 .attr("x", function(d, i) { return legendElementWidth * i; })
+                  .attr("y", boxheight + (gridSize*2))
+                 .text( function (d) { return "Amount of variation per bin"; })
+                 .attr("font-size", "16px")
+                 ;
+
   legend.append("rect")
     .attr("x", function(d, i) { return legendElementWidth * i; })
-    .attr("y", boxheight + (gridSize*2))
+    .attr("y", boxheight + (gridSize*2) + 30)
     .attr("width", legendElementWidth)
     .attr("height", gridSize)
     .style("fill", function(d, i) { return colors[i]; });
@@ -14247,7 +14254,7 @@ var legend = svg.selectAll(".legend")
     .text(function(d) { return d3.round(d * (maxValue/buckets)); })
     .attr("width", legendElementWidth)
     .attr("y", function(d, i) { return (legendElementWidth * -1 * i) - 10; })
-    .attr("x", boxheight + (gridSize*4))
+    .attr("x", boxheight + (gridSize*4) + 30)
     .attr("transform", function(d) {return "rotate(90)" });
    </script>
    </body>
