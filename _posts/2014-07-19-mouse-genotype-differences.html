@@ -8,7 +8,7 @@
   <title>Mouse Genome Project SNP layout</title>
    <style>
       body {
-       font: 10px sans-serif;
+       font: 11px sans-serif;
       }
 
       rect.bordered {
@@ -14161,7 +14161,7 @@ var data = [
 { contig: 19, position: 51000000, both: "19:51000000", bin: 828, contigBin: 18, variable: "WSBEiJ", value: 7671, variableCount: 17 },
 { contig: 19, position: 54000000, both: "19:54000000", bin: 829, contigBin: 19, variable: "WSBEiJ", value: 7043, variableCount: 17 },
 { contig: 19, position: 57000000, both: "19:57000000", bin: 830, contigBin: 20, variable: "WSBEiJ", value: 12471, variableCount: 17 },
-{ contig: 19, position: 60000000, both: "19:60000000", bin: 831, contigBin: 21, variable: "WSBEiJ", value: 9123, variableCount: 17 },
+{ contig: 19, position: 60000000, both: "19:60000000", bin: 831, contigBin: 21, variable: "WSBEiJ", value: 9123, variableCount: 17 }
 ]
 var gridSize = 10,
     h = gridSize,
@@ -14174,7 +14174,7 @@ var legendElementWidth = gridSize*2.5;
 var maxValue = d3.max(data, function (d) { return d.value; })
 var chromeSpacer = gridSize*(17 + 7)
 var margin = {top: 50, right: 80, bottom: 30, left: 50},
-    width = 5000 - margin.left - margin.right,
+    width = 6000 - margin.left - margin.right,
     height = 1000 - margin.top - margin.bottom;
 colors = ['#005824','#1A693B','#347B53','#4F8D6B','#699F83','#83B09B','#9EC2B3','#B8D4CB','#D2E6E3','#EDF8FB','#FFFFFF','#F1EEF6','#E6D3E1','#DBB9CD','#D19EB9','#C684A4','#BB6990','#B14F7C','#A63467','#9B1A53','#91003F'];
 var colorScale = d3.scale.quantile()
@@ -14215,35 +14215,47 @@ var rowLabels = svg.append("g")
       .attr("transform", "translate(-6," + gridSize + ")")
       ;
 
-var colLabels = svg.append("g")
-      .selectAll(".colLabelg")
+colnames = ["X129P2","X129S1","X129S5","AJ","AKRJ","BALBcJ","C3HHeJ","CASTEiJ","CBAJ","DBA2J","FVBNJ","LPJ","NODShiLtJ","NZOHlLtJ","PWKPhJ","SPRETEiJ","WSBEiJ"];
+for (var ff = 1; ff < 20; ff++) {
+  var colLabels = svg.append("g")
+      .selectAll(".colLabelg2")
+      .data(colnames)
+      .enter()
+      .append("text")
+      .text(function (d) { return d; })
+      .attr("y", function(d,i) { return ((2+i) * w + 30) + ((ff - 1) * chromeSpacer); })
+      .attr("x", function(d) { return -5; })
+      .attr("transform", function(d) {return "rotate(-90)" })
+  }
+/* this generated some weird text, get rid of it
+  var colLabels = svg.append("g")
+      .selectAll(".colLabelg2")
       .data(data)
       .enter()
       .append("text")
       .text(function (d) { return d.variable; })
-      .filter(function(d){ return d.contigBin == 1; })
+      .filter(function(d){ return d.contigBin == 1 && d.contig > 0 && d.contig < 20 ; })
     .attr("y", function(d) { return ((1+d.variableCount) * w + 30) + ((d.contig - 1) * chromeSpacer); })
     .attr("x", function(d) { return -5; })
-    .style("text-anchor", "start")
-      .attr("transform", "translate(-6," + gridSize + ")")
       .attr("transform", function(d) {return "rotate(-90)" })
-      ;
+      ;*/
 
 var legend = svg.selectAll(".legend")
       .data([0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21])
       .enter().append("g")
       .attr("class", "legend");
  
-  var textLabels = text
-                 .attr("x", function(d, i) { return legendElementWidth * i; })
-                  .attr("y", boxheight + (gridSize*2))
-                 .text( function (d) { return "Amount of variation per bin"; })
-                 .attr("font-size", "16px")
-                 ;
+legend.append("text")
+      .filter(function(d){ return d == 1; })
+      .attr("x", legendElementWidth - 20)
+      .attr("y", boxheight + (gridSize*2) + 30)
+      .attr("dy",0)
+      .attr("font-size", "20px")
+      .text("Number of variants per bin");
 
   legend.append("rect")
     .attr("x", function(d, i) { return legendElementWidth * i; })
-    .attr("y", boxheight + (gridSize*2) + 30)
+    .attr("y", boxheight + (gridSize*2) + 40)
     .attr("width", legendElementWidth)
     .attr("height", gridSize)
     .style("fill", function(d, i) { return colors[i]; });
@@ -14254,7 +14266,7 @@ var legend = svg.selectAll(".legend")
     .text(function(d) { return d3.round(d * (maxValue/buckets)); })
     .attr("width", legendElementWidth)
     .attr("y", function(d, i) { return (legendElementWidth * -1 * i) - 10; })
-    .attr("x", boxheight + (gridSize*4) + 30)
+    .attr("x", boxheight + (gridSize*4) + 40)
     .attr("transform", function(d) {return "rotate(90)" });
    </script>
    </body>
