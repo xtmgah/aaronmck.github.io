@@ -136,7 +136,7 @@ var svg = d3.select("#topplot").append("svg")
 svg.call(tip);
 z = d3.scale.ordinal().range(["#E69F00", "#56B4E9", "#009E73" ]),
 
-d3.tsv("gbm_native_analysis_set.patients.counts_and_rates3.txt", function(error, data) {
+d3.tsv("/gbm_native_analysis_set.patients.counts_and_rates3.txt", function(error, data) {
   // Transpose the data into layers by cause.
   data.sort(function(a, b){ return d3.descending(a.name, b.name); })
   var muts = d3.layout.stack()(["nnon_tot", "nsil_tot", "ndbsnp_tot"].map(function(mutation) {
@@ -199,7 +199,7 @@ var svgHeatRight = d3.select("#heatmapRight").append("svg")
 
 svgHeat.call(tipHeat);
 
-d3.tsv("mutation_table.txt", function(error, data) {
+d3.tsv("/mutation_table.txt", function(error, data) {
     data.sort(function(a, b){ return d3.descending(a.sample, b.sample); })
 
     // the scales and axis for the heatmap data  
