@@ -289,7 +289,7 @@ d3.tsv("/mutation_table.txt", function(error, data) {
     var mutationCounts = svgHeatRight.selectAll(".heatmapRight")
       .data(counts)
       .enter().append("rect")
-      .attr("class", "bar")
+      .attr("class", "barRight")
       .attr("width", function(d) { return mutCountScale(d.values.sumvalues) + 0.5; })
       .attr("x", function(d) { return 65; })
       .attr("y", function(d) { return 3 + margin.top + margin.bottom + height + yScale(d.key) - (heat_height / (uniqueGenes.length)/2) - 1; })
