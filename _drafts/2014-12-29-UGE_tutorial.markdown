@@ -24,6 +24,9 @@ Why do we need SGE/UGE? Say your the IT person for a large department at a unive
 
 So you decide to buy a lot of cheap machines, some with lots of memory, some with lots of processessors, and stick them on the network.  Problem solved!  But everyone complains because they don't know which machine to use, the machine they like is getting beaten up by 10 grad students because they all followed the same tutorial, and you have no way of knowing if a machine is up and running or on fire in the back closet.  Booo.  You need some way of managing this: a way for people to specify what they need, and a system to route them to the right idle machine, and recover it when they're done.  Enter Grid Engines!
 
-The basic concept is this: *You tell a grid engine what to run, and what resources it takes to run it, and it takes care of the rest somewhere out in your local or global "cloud" of computers*
+The basic concept is this: **You tell a grid engine what to run, and what resources it takes to run it, and it takes care of the rest somewhere out in your local or global "cloud" of computers**
 
+Let's get started
+------------------------
+So start a terminal window on your local machine (be it Windows, Mac, or Linux).  
 
