@@ -39,13 +39,14 @@ Now login to your remote machine of choice.  This should be a machine that can l
             <a href="#" class="deactivate">deactivate</a>
           </nav>
           <h1 class="titleInside">Terminal</h1>
-          <div class="container"><div class="terminal">
+          
+          <div class="terminal">
 <table><tr>
 <td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span></pre></td>
 <td class='code'><pre><code><span class='line output'>test output line</span></code></pre></td>
 </tr></table>
-</div></div>
-        </div>
+</div>
+</div>
 
 Many thanks, including:
 The terminal tag from [http://jumpstartlab.com](http://jumpstartlab.com/news/archives/2013/10/16/octopress-terminal-tag)
