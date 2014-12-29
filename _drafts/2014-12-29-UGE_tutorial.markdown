@@ -1,9 +1,15 @@
 ---
 layout: post
-title:  "Python or Scala going forward"
+title:  "UGE - Running jobs on the farm"
 date:   2014-05-19 14:56:10
-categories: programming scala python
+categories: farm compute UGE grid engine
 ---
-So, this is not meant to invoke rage on either side.  I've been a long-time fan of both langauges.   I'm trying to unify everything down to a single language choice these days, as I currently find code scattered around my file system written in Scala/Python/R/Ruby/Java/C/C++/Haskell.
+Alright, here goes my attempt at a lightweight tutorial on using Sun Grid Engine equivilents such as UGE (Univa) or OGE (Sun became Oracle).  There are a lot of great resources out there, but there doesn't seem to be a lot of basic tutorials or [an ELI5](http://www.reddit.com/r/explainlikeimfive/ "ELI5 - reddit") write-ups.  This is too bad, as SGE and it's friends are becoming widely used.
 
-I've narrowed down the choices to Scala and Python.  Both can wrap low level languages, and both have advantages that are appropriate to my development needs (anaylsis, scripting, computational biology tool development).  Right now in comp bio people generally write high(er) performance tools in 
+Who Cares?
+-------------
+Almost anyone these days who works in a computing evironment.  It used to be that SGE (and related tools like LSF) were the domain of system adminstators and backend programmers, but this is all changing (this is a good thing).  Now most academic labs have access to large clusters, and the expectation is that you'll use these resources fairly and appropriately.  Great! Except, that mean you have to learn how to do that, and that's the motivation behind the 'who cares' part: you.  
+
+What are we going to cover?
+------------------------
+UGE can seem complicated, but like just about any computer system, you'll need to know about 2% of it to get your standard work done.  I'll try to focus on those 2% here, and mix in some background so that you know where to look for the next step and don't get yelled at for doing something dumb (really everyone's primary goal).  
