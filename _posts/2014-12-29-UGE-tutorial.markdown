@@ -42,7 +42,7 @@ Now login to your remote machine of choice.  This should be a machine that can l
           <div class="container"><div class="terminal">
 <table><tr>
 <td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span></pre></td>
-<td class='code'><pre><code>Fetching: i18n-0.6.1.gem (100%)</code></pre></td>
+<td class='code'><pre><code><span class='line output'>test output line</span></code></pre></td>
 </tr></table>
 </div></div>
         </div>
