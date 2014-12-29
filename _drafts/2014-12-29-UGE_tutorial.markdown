@@ -28,5 +28,12 @@ The basic concept is this: **You tell a grid engine what to run, and what resour
 
 Let's get started
 ------------------------
-So start a terminal window on your local machine (be it Windows, Mac, or Linux).  
+So start a terminal window on your local machine (be it Windows, Mac, or Linux).  Mine looks like this:
+
+Now login to your remote machine of choice.  This should be a machine that can launch grid engine jobs.  If you don't know what machine's on your network can do this, it's best to ask IT or whoever setup the server farm.  Ok, now I have:
+
+
+
+Many thanks, including:
+The terminal tag from [http://jumpstartlab.com](http://jumpstartlab.com/news/archives/2013/10/16/octopress-terminal-tag)
 
