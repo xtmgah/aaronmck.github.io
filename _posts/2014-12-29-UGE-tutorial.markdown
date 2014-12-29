@@ -32,13 +32,20 @@ So start a terminal window on your local machine (be it Windows, Mac, or Linux).
 
 Now login to your remote machine of choice.  This should be a machine that can launch grid engine jobs.  If you don't know what machine's on your network can do this, it's best to ask IT or whoever setup the server farm.  Ok, now I have:
 
-{% terminal %}
-$ gem install rails
-Fetching: i18n-0.6.1.gem (100%)
-Fetching: multi_json-1.3.6.gem (100%)
-Fetching: activesupport-3.2.8.gem (100%)
-...
-{% endterminal %}
+<div class="window">
+          <nav class="control-window">
+            <a href="#finder" class="close" data-rel="close">close</a>
+            <a href="#" class="minimize">minimize</a>
+            <a href="#" class="deactivate">deactivate</a>
+          </nav>
+          <h1 class="titleInside">Terminal</h1>
+          <div class="container"><div class="terminal">
+<table><tr>
+<td class='gutter'><pre class='line-numbers'>1</pre></td>
+<td class='code'><pre><code>Fetching: i18n-0.6.1.gem (100%)</code></pre></td>
+</tr></table>
+</div></div>
+        </div>
 
 Many thanks, including:
 The terminal tag from [http://jumpstartlab.com](http://jumpstartlab.com/news/archives/2013/10/16/octopress-terminal-tag)
