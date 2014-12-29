@@ -44,11 +44,9 @@ Now login to your remote machine of choice.  This should be a machine that can l
 <table>
 
 <tr>
-<td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span></pre></td>
+<td class='gutter'><span class='line-number'>1</span></td>
 <td class='code'><pre><code><span class='line command'>$ a fake command</span></code></pre></td>
-</tr>
-<tr>
-<td class='gutter'><pre class='line-numbers'><span class='line-number'>1</span></pre></td>
+<td class='gutter'><span class='line-number'>2</span></td>
 <td class='code'><pre><code><span class='line output'>  test output line</span></code></pre></td>
 </tr>
 
