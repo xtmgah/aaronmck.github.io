@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "UGE - life on the farm"
-date:   2014-05-19 14:56:10
+date:   2014-12-29 14:56:10
 categories: farm compute UGE grid engine
 ---
 Alright, here goes my attempt at a lightweight tutorial on using Sun Grid Engine (SGE), or it's equivilents such as UGE (Univa) or OGE (Sun -> Oracle).  There are a lot of great resources out there for so many other things, but there doesn't seem to be a lot of basic tutorials or [an ELI5](http://www.reddit.com/r/explainlikeimfive/ "ELI5 - reddit") write-ups for SGE.  This is too bad, as SGE and it's friends are pretty widely used, and it seems like there's a lot of confusion.
