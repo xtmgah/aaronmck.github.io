@@ -107,9 +107,34 @@ From the status messages you can see that SGE put our interactive job on the que
 
 ### Normal Jobs
 
-More often, you'll want to kick off a job that will run independently on the farm, with no supervision from you.  Just like an interactive sesssion, SGE will find a host for you and start the requested program with the arguments you provide.  The difference is that you won't watch this all happen: SGE takes you command, runs it, releases the machine when the program is done, and stores the command-line output you would of seen for you.  let's start with something basic
+More often, you'll want to kick off a job that will run independently on the farm, with no supervision from you.  Just like an interactive sesssion, SGE will find a host for you and start the requested program with the arguments you provide.  The difference is that you won't watch this all happen: SGE takes you command, runs it, releases the machine when the program is done, and stores the command-line output you would of seen for you.  Let's start with something basic.
 
 ##### Basic SGE script
+
+So let's say we want to use one of the [Picard](http://broadinstitute.github.io/picard/) tools to convert a bam file we have back to fastq files.  It really doesn't matter what we run, we just need to make it into a script file.  Here's my example shell script file:
+<code>
+# test_run.sh
+java -Xmx4g \
+     -jar /path/to/jar/file/SamToFastq.jar \
+     I=/path/to/jar/file/mybam.bam \
+     F=/path/to/jar/file/fq1.gz \
+     F2=/path/to/jar/file/fq2.gz
+</code>
+
+It's great to have this in a script because you can test it just using your command line before you send it off to the cloud to be computed.  So after you've made your script, test run it on the command line:
+
+<div class="window"><nav class="control-window">
+<a href="#finder" class="close" data-rel="close">close</a><a href="#" class="minimize">minimize</a><a href="#" class="deactivate">deactivate</a>
+</nav><h1 class="titleInside">Terminal</h1><div class="terminal">
+<table>
+	<tr>
+		<td class='gutter'><pre class='line-numbers'><span class='line-numbers'>1</span></pre></td>
+		<td class='code'><pre><code><span class='line prompt'>$></span><span class='line command'> sh test_script.sh</span><br>
+</code></pre></td>
+	</tr>
+</table>
+</div></div>
+
 
 Many thanks, including:
 The terminal tag from [http://jumpstartlab.com](http://jumpstartlab.com/news/archives/2013/10/16/octopress-terminal-tag)
