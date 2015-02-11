@@ -115,11 +115,7 @@ So let's say we want to use one of the [Picard](http://broadinstitute.github.io/
 <code>
 # test_run.sh
 
-java -Xmx4g \
--jar /path/to/jar/file/SamToFastq.jar \
-I=/path/to/jar/file/mybam.bam \
-F=/path/to/jar/file/fq1.gz \
-F2=/path/to/jar/file/fq2.gz
+java -Xmx4g -jar /path/to/jar/file/SamToFastq.jar I=/path/to/jar/file/mybam.bam F=/path/to/jar/file/fq1.gz F2=/path/to/jar/file/fq2.gz
 </code>
 
 It's great to have this in a script because you can test it just using your command line before you send it off to the cloud to be computed.  So after you've made your script, test run it on the command line:
