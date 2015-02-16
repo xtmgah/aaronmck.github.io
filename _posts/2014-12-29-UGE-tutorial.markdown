@@ -112,7 +112,7 @@ More often, you'll want to kick off a job that will run independently on the far
 
 ##### Before you start
 
-Before you start sending jobs out to the grid engine, it's good to get some default settings in place.  These are things that you don't want to have to specify everytime you run UGE because none of them should change regularly.  These settings get placed in a file in your unix home directory named *.sge_request*.  You should open that file and add at least some of the following lines.  Things you need to fill in are in brackets ( < ).
+Before you start sending jobs out to the grid engine, it's good to get some default settings in place.  These are things that you don't want to have to specify everytime you run UGE because none of them should change regularly.  These settings get placed in a file in your unix home directory named *.sge_request*.  You should open that file and add at least some of the following lines.  Things you need to fill in are in brackets ( < ).  Ignore all the backticks in the following code, you can see what the whole file would look like below the examples:
 
 Tell UGE what default queue you should dispatch jobs to (for us in the Shendure lab, this should be ravana.q:
 
@@ -193,8 +193,29 @@ This lets you see that the script runs without errors.  The grid engine will als
 
 ##### Running the basic script on UGE
 
-Ok, now we need to run it, using the grid engine.  You dispatch jobs using the *qsub* command. You use this command as follows:
+Ok, now we need to actually run it using the grid engine.  You dispatch jobs using the *qsub* command. You use this command as follows:
 
+<div class="shell-wrap">
+  <p class="shell-top-bar">/Your/Local/Dir</p>
+  <ul class="shell-body">
+    <li>qsub -shell y -l virtual_free=4g,mfree=4g test_script.sh
+<br><br>
+    <a style="color=red">Your job 19221 ("test_script.sh") has been submitted</a></li>
+  </ul>
+</div>
+
+Our job is now out there, we should be able to see it using qstat:
+
+<div class="shell-wrap">
+  <p class="shell-top-bar">/Your/Local/Dir</p>
+  <ul class="shell-body">
+    <li>qstat
+<br><br>
+    <a style="color=red">job-ID     prior   name       user         ....
+------------------------------------------------------------------------
+     19221 0.00000 test_scrip aaronmck     qw    02/16/2015 12:09:07</a></li>
+  </ul>
+</div>
 	
 
 Many thanks, including:
