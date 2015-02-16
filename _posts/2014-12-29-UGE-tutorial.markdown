@@ -13,7 +13,7 @@ You.  Ok, more specificly, almost anyone who works in a computing environment.  
 
 #### What are we going to cover?
 
-UGE can seem complicated, but like just about any computer system, you'll need to know about 2% of it to get your routine work done.  I'll try to focus on those 2% here, and mix in some background so that you know where to look for the next step.  Most importantly our goal is that you don't get yelled at for doing something dumb (really everyone's primary goal).  Lastly, some of the information will be specific to the lab I'm working in at the University of Washington, but for anyone else reading this: you can pass over that stuff or fill in the specifics of your setup.
+UGE can seem complicated, but like just about any computer system, you'll need to know about 2% of it to get your routine work done.  I'll try to focus on those 2% here, and mix in some background so that you know where to look for the next step.  Most importantly our goal is that you don't get yelled at for doing something dumb (really everyone's primary goal).  Lastly, some of the information will be specific to the lab I'm working in at the University of Washington, but for anyone else reading this: you can pass over that stuff or fill in the specifics for your setup.
 
 #### What are we not going to cover?
 
@@ -123,6 +123,8 @@ So let's say we want to use one of the [Picard](http://broadinstitute.github.io/
 	F2=/path/to/jar/file/fq2.gz
 
 It's great to have this in a script because you can test it just using your command line before you send it off to the cloud to be computed.  So after you've made your script, give it a test run on the command line:
+
+
 <div class="shell-wrap">
   <p class="shell-top-bar">/Users/pjlangley/Documents/websites/</p>
   <ul class="shell-body">
@@ -130,7 +132,7 @@ It's great to have this in a script because you can test it just using your comm
   </ul>
 </div>
 
-This lets you see that the script runs without errors.  The grid engine will report back errors, it just takes more time to debug as you have to wait for the program to get dispatched to a node, for it to fail, and UGE to return the error messages to you.
+This lets you see that the script runs without errors.  The grid engine will also report back any errors, it just takes more time to debug as you have to wait for the program to get dispatched to a node, for it to fail, and UGE to return the error messages to you.
 
 Many thanks, including:
 The terminal tag from [http://jumpstartlab.com](http://jumpstartlab.com/news/archives/2013/10/16/octopress-terminal-tag)
