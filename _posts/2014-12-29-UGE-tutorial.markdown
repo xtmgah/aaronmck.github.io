@@ -36,7 +36,7 @@ So start a terminal window on your local machine (be it Windows, Mac, or Linux).
 <div class="shell-wrap">
   <p class="shell-top-bar">/Your/Local/Dir</p>
   <ul class="shell-body">
-    <li>ssh shead<br>   ...<br>   ...<br><a style="color=red">Last login: Fri Dec 26 18:13:44 2014 from othermachine.gs.washington.edu</a>
+    <li>ssh shead<br>   ...<br>   ...<br><a style="color=red">Last login: Fri Dec 26 18:13:44 2014 from othermachine.gs.washington.edu</a></li>
     </ul>
 </div>
 	
@@ -52,7 +52,7 @@ we'll use the **qstat** command to see *1)* if we can talk to the UGE farm *2)* 
 8103      18.37395 QLOGIN     fakeuser1    r     12/11/2014 16:58:18 ravana.q<br>
 8992      17.93886 QLOGIN     fakeuser2    r     12/12/2014 12:31:55 ravana.q<br>
 		</a>
-  </ul>
+  </li></ul>
 </div>
 	
 
@@ -84,7 +84,7 @@ So now's a good time to talk about the difference between a normal job and an in
    Your interactive job 13133 has been successfully scheduled.<br>
    Establishing /usr/local/bin/qlogin_command session to host s019.grid<br>
    Kickstarted on 2013-03-21
- </ul>
+ </li></ul>
 </div>
 	
 From the status messages you can see that SGE put our interactive job on the queue, waited for a machine to open up, and dispatched us to the first open machine (in this case s019.grid). After this, you should get a terminal prompt, and be able to type command like you would on any other machine.  This machine is all yours until you give it up!  *Importantly, you should give the machine up as soon as you're done with it*, it's no fair to hog resources.  The whole point of SGE is that it can be managed properly, and it's very poor form to take that away from the administrators.  So when you're done browsing the file system, make sure to type *exit* and return your host back to the pool of available computers.  Ok, interactive sessions seem simple enough, how about launching your own jobs?
