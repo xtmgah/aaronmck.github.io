@@ -123,6 +123,7 @@ So let's say we want to use one of the [Picard](http://broadinstitute.github.io/
 	F2=/path/to/jar/file/fq2.gz
 
 It's great to have this in a script because you can test it just using your command line before you send it off to the cloud to be computed.  So after you've made your script, give it a test run on the command line:
+
 <div class="shell-wrap">
   <p class="shell-top-bar">/Users/pjlangley/Documents/websites/</p>
   <ul class="shell-body">
