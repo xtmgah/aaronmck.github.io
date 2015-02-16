@@ -33,40 +33,28 @@ The basic concept is this: **You tell a grid engine what to run, what resources 
 
 So start a terminal window on your local machine (be it Windows, Mac, or Linux).  Now ssh into your remote machine of choice.  This should be a machine that can launch grid engine jobs.  If you don't know which machines on your network can do this, it's best to ask IT or whoever set up the server farm.  Ok, now my fake terminal window looks like this:
 
-<div class="window"><nav class="control-window">
-<a href="#finder" class="close" data-rel="close">close</a><a href="#" class="minimize">minimize</a><a href="#" class="deactivate">deactivate</a>
-</nav><h1 class="titleInside">Terminal</h1><div class="terminal">
-<table>
-	<tr>
-		<td class='gutter'><pre class='line-numbers'><span class='line-numbers'>1</span></pre></td>
-		<td class='code'><pre><code><span class='line prompt'>$></span><span class='line command'> ssh shead</span><br><span class='line output'>   ...<br>   ...<br>   Last login: Fri Dec 26 18:13:44 2014 from othermachine.gs.washington.edu</span></code></pre></td>
-	</tr>
-</table>
-<table>
-	<tr>
-		<td class='gutter'><pre class='line-numbers'><span class='line-numbers'>2</span></pre></td>
-		<td class='code'><pre><code><span class='line prompt'>$></span><span class='line command'> ssh ganesh</span><br><span class='line output'>   ...<br>   ...<br>   Last login: Fri Dec 26 18:13:44 2014 from othermachine.gs.washington.edu</span></code></pre></td>
-	</tr>
-</table>
-</div></div>
+<div class="shell-wrap">
+  <p class="shell-top-bar">/Your/Local/Dir</p>
+  <ul class="shell-body">
+    <li>ssh shead<br>   ...<br>   ...<br><a style="color=red">Last login: Fri Dec 26 18:13:44 2014 from othermachine.gs.washington.edu</a>
+    </ul>
+</div>
+	
 
 Ok, now we're on a machine we think can launch UGE jobs (in our case above, we've SSH'ed into ganesh, a machine someone's told us can interact with the UGE farm).  How do we verify that this machine connects to the UGE/SGE farm?  UGE comes with a lot of command-line tools to see what's running on the farm, to tell it to dispatch a job, etc.  Here
 we'll use the **qstat** command to see *1)* if we can talk to the UGE farm *2)* what's already running on our farm. You should see something like:
 
-<div class="window"><nav class="control-window">
-<a href="#finder" class="close" data-rel="close">close</a><a href="#" class="minimize">minimize</a><a href="#" class="deactivate">deactivate</a>
-</nav><h1 class="titleInside">Terminal</h1><div class="terminal">
-<table>
-	<tr>
-		<td class='gutter'><pre class='line-numbers'><span class='line-numbers'>1</span></pre></td>
-		<td class='code'><pre><code><span class='line prompt'>$></span><span class='line command'> qstat</span><br><span class='line output'>   job-ID     prior   name       user         state submit/start at     queue</span>
-<span class='line output'>   --------------------------------------------------------------------------</span>
-<span class='line output'>   8103      18.37395 QLOGIN     fakeuser1    r     12/11/2014 16:58:18 ravana.q</span>
-<span class='line output'>   8992      17.93886 QLOGIN     fakeuser2    r     12/12/2014 12:31:55 ravana.q</span>
-		</code></pre></td>
-	</tr>
-</table>
-</div></div>
+<div class="shell-wrap">
+  <p class="shell-top-bar">/Your/Local/Dir</p>
+  <ul class="shell-body">
+    <li>job-ID     prior   name       user         state submit/start at     queue<br>
+<a style="color=red">--------------------------------------------------------------------------<br>
+8103      18.37395 QLOGIN     fakeuser1    r     12/11/2014 16:58:18 ravana.q<br>
+8992      17.93886 QLOGIN     fakeuser2    r     12/12/2014 12:31:55 ravana.q<br>
+		</a>
+  </ul>
+</div>
+	
 
 If you don't see something like this, either that the command is missing or the server can't connect to the SGE node. If you don;t see output like this it would be worth asking an administrator if you're on the right machine, or if you need to load a specific package or configuration to get SGE working for you.  
 
@@ -87,23 +75,18 @@ You can find a lot more information about qstat by typing *man qstat* on the com
 So now's a good time to talk about the difference between a normal job and an interactive session: nothing!  An interactive session is just a shorthand way of telling SGE that you'd like it start up a process, the terminal, on one of it's machines.  The only difference is that you then interact with that job (type commands, see responses, etc), whereas a normal job would just execute somewhere are return you the results.  Ok, so let's go get an interactive job and try some things out:
 
 
-<div class="window"><nav class="control-window">
-<a href="#finder" class="close" data-rel="close">close</a><a href="#" class="minimize">minimize</a><a href="#" class="deactivate">deactivate</a>
-</nav><h1 class="titleInside">Terminal</h1><div class="terminal">
-<table>
-	<tr>
-		<td class='gutter'><pre class='line-numbers'><span class='line-numbers'>1</span></pre></td>
-		<td class='code'><pre><code><span class='line prompt'>$></span><span class='line command'> qlogin</span><br><span class='line output'>   Your job 13133 ("QLOGIN") has been submitted
-   waiting for interactive job to be scheduled ...
-   Your interactive job 13133 has been successfully scheduled.
-   Establishing /usr/local/bin/qlogin_command session to host s019.grid
-
+<div class="shell-wrap">
+  <p class="shell-top-bar">/Your/Local/Dir</p>
+  <ul class="shell-body">
+    <li>qlogin<br>
+    <a style="color=red">Your job 13133 ("QLOGIN") has been submitted<br>
+   waiting for interactive job to be scheduled ...<br>
+   Your interactive job 13133 has been successfully scheduled.<br>
+   Establishing /usr/local/bin/qlogin_command session to host s019.grid<br>
    Kickstarted on 2013-03-21</span>
-		</code></pre></td>
-	</tr>
-</table>
-</div></div>
-
+ </ul>
+</div>
+	
 From the status messages you can see that SGE put our interactive job on the queue, waited for a machine to open up, and dispatched us to the first open machine (in this case s019.grid). After this, you should get a terminal prompt, and be able to type command like you would on any other machine.  This machine is all yours until you give it up!  *Importantly, you should give the machine up as soon as you're done with it*, it's no fair to hog resources.  The whole point of SGE is that it can be managed properly, and it's very poor form to take that away from the administrators.  So when you're done browsing the file system, make sure to type *exit* and return your host back to the pool of available computers.  Ok, interactive sessions seem simple enough, how about launching your own jobs?
 
 ### Normal Jobs
