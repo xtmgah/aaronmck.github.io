@@ -211,8 +211,8 @@ Our job is now out there, we should be able to see it using qstat:
   <ul class="shell-body">
     <li>qstat
 <br><br>
-    <a style="color=red">job-ID     prior   name       user         ....
-------------------------------------------------------------------------
+    <a style="color=red">job-ID     prior   name       user         ....<br>
+------------------------------------------------------------------------<br>
      19221 0.00000 test_scrip aaronmck     qw    02/16/2015 12:09:07</a></li>
   </ul>
 </div>
