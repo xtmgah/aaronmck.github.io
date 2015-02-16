@@ -4,6 +4,9 @@ title:  "UGE - life on the farm"
 date:   2014-12-29 14:56:10
 categories: farm compute UGE grid engine
 ---
+<link href="http://aaronmck.github.io/css/terminal.css" rel="stylesheet"></link>
+
+
 Sadly, there aren't a lot of clearly writen tutorials out there on Sun Grid Engine (SGE) or its cousins like UGE or OGE.  Although I make no promises about 'clearly writen',  hopefully you can come away from this mini-tutorial with a better understanding of what grid engines are designed for and some basic understanding of their usage.
 
 #### Who Cares?
