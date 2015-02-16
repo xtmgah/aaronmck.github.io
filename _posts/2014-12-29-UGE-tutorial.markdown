@@ -212,12 +212,12 @@ Our job is now out there, we should be able to see it using qstat:
     <li>qstat
 <br><br>
     <a style="color=red">job-ID     prior   name       user         ....<br>
-------------------------------------------------------------------------<br>
-     19221 0.00000 test_scrip aaronmck     qw    02/16/2015 12:09:07</a></li>
+-----------------------------------------------------<br>
+     19221 0.00000 test_scrip aaronmck     r    02/16/2015 12:09:07</a></li>
   </ul>
 </div>
 	
-
+Again, the `r` mean it's running.  Congrats your very first UGE jobs is out there running!
 Many thanks, including:
 The terminal tag from [http://jumpstartlab.com](http://jumpstartlab.com/news/archives/2013/10/16/octopress-terminal-tag)
 
