@@ -123,18 +123,12 @@ So let's say we want to use one of the [Picard](http://broadinstitute.github.io/
 	F2=/path/to/jar/file/fq2.gz
 
 It's great to have this in a script because you can test it just using your command line before you send it off to the cloud to be computed.  So after you've made your script, give it a test run on the command line:
-
-<div class="window"><nav class="control-window">
-<a href="#finder" class="close" data-rel="close">close</a><a href="#" class="minimize">minimize</a><a href="#" class="deactivate">deactivate</a>
-</nav><h1 class="titleInside">Terminal</h1><div class="terminal">
-<table>
-	<tr>
-		<td class='gutter'><pre class='line-numbers'><span class='line-numbers'>1</span></pre></td>
-		<td class='code'><pre><code><span class='line prompt'>$></span><span class='line command'> sh test_script.sh</span><br>
-</code></pre></td>
-	</tr>
-</table>
-</div></div>
+<div class="shell-wrap">
+  <p class="shell-top-bar">/Users/pjlangley/Documents/websites/</p>
+  <ul class="shell-body">
+    <li>sh test_script.sh</li>
+  </ul>
+</div>
 
 This lets you see that the script runs without errors.  The grid engine will report back errors, it just takes more time to debug as you have to wait for the program to get dispatched to a node, for it to fail, and UGE to return the error messages to you.
 
