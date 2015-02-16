@@ -127,9 +127,9 @@ It's great to have this in a script because you can test it just using your comm
 <div class="shell-wrap">
   <p class="shell-top-bar">/Users/pjlangley/Documents/websites/</p>
   <ul class="shell-body">
-    <li>sh test_script.sh</li>
-    <li></li>
-    <li><a style="color=red">your output here</a></li>
+    <li>sh test_script.sh
+    
+    <a style="color=red">your output here</a></li>
   </ul>
 </div>
 
