@@ -110,7 +110,55 @@ From the status messages you can see that SGE put our interactive job on the que
 
 More often, you'll want to kick off a job that will run independently on the farm, with no supervision from you.  Just like an interactive sesssion, SGE will find a host for you and start the requested program with the arguments you provide.  The difference is that you won't watch this all happen: SGE takes you command, runs it, releases the machine when the program is done, and stores the command-line output you would of seen for you.  Let's start with something basic.
 
-##### Basic SGE script
+##### Before you start
+
+Before you start sending jobs out to the grid engine, it's good to get some default settings in place.  These are things that you don't want to have to specify everytime you run UGE because none of them should change regularly.  These settings get placed in a file in your unix home directory named *.sge_request*.  You should open that file and add at least some of the following lines.  Things you need to fill in are in brackets ( < ).
+
+Tell UGE what default queue you should dispatch jobs to (for us in the Shendure lab, this should be ravana.q:
+
+	-q <default.queue.name>
+	
+Tell UGE to treat your executables as either scripts or binaries, usually a safe bet to set this to 'y':
+	-b y 
+	
+Start the job from the current directory (helps when you only specify relative paths like myfiles/thefileIwant.txt):
+	-cwd 
+	
+be verbose, and dump out a lot of information on runs:
+	-V 
+	
+merge the error output in with the normal output of a job. Generally as a newbie you want this set to yes (y) so you see all of your jobs output together:
+	-j y 
+	
+what conditions do you want to recieve an email for a = when the job is aborted or rescheduled, and e = send email at end of the job (b = beginning is the alternative):
+	-m ae 
+	
+this is a lab specific thing, we only want redhat 6 machines by default:
+	-l rhel=6 
+	
+where to send the emails to:
+	-M USERID@uw.edu 
+	
+where to put your output for both normal runs and errors:
+	-o /net/shendure/vol1/home/USERID/sge_logs/ 
+	-e /net/shendure/vol1/home/USERID/sge_logs/
+
+together this looks like:
+
+	-q ravana.q  
+	-b y 
+	-cwd 
+	-V 
+	-j y 
+	-m ae 
+	-l rhel=6 
+	-M USERID@uw.edu 
+	-o /net/shendure/vol1/home/USERID/sge_logs/ 
+	-e /net/shendure/vol1/home/USERID/sge_logs/
+	
+Saved in the *.sge_request* file.  There are pleanty of other options you could request, you can find out more by running *man qsub* on your command line.
+
+##### Basic UGE script
 
 So let's say we want to use one of the [Picard](http://broadinstitute.github.io/picard/) tools to convert a bam file we have back to fastq files.  It really doesn't matter what we run, we just need to make it into a script file.  Here's my example shell script file:
 
@@ -125,7 +173,7 @@ So let's say we want to use one of the [Picard](http://broadinstitute.github.io/
 It's great to have this in a script because you can test it just using your command line before you send it off to the cloud to be computed.  So after you've made your script, give it a test run on the command line:
 
 <div class="shell-wrap">
-  <p class="shell-top-bar">/Users/pjlangley/Documents/websites/</p>
+  <p class="shell-top-bar">/Your/Local/Dir</p>
   <ul class="shell-body">
     <li>sh test_script.sh
     <br><br>
@@ -134,6 +182,12 @@ It's great to have this in a script because you can test it just using your comm
 </div>
 
 This lets you see that the script runs without errors.  The grid engine will also report back any errors, it just takes more time to debug as you have to wait for the program to get dispatched to a node, for it to fail, and UGE to return the error messages to you.
+
+##### Running the basic script on UGE
+
+Ok, now we need to run it, using the grid engine.  You dispatch jobs using the *qsub* command. You use this command as follows:
+
+	
 
 Many thanks, including:
 The terminal tag from [http://jumpstartlab.com](http://jumpstartlab.com/news/archives/2013/10/16/octopress-terminal-tag)
