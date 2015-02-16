@@ -83,7 +83,7 @@ So now's a good time to talk about the difference between a normal job and an in
    waiting for interactive job to be scheduled ...<br>
    Your interactive job 13133 has been successfully scheduled.<br>
    Establishing /usr/local/bin/qlogin_command session to host s019.grid<br>
-   Kickstarted on 2013-03-21</span>
+   Kickstarted on 2013-03-21
  </ul>
 </div>
 	
