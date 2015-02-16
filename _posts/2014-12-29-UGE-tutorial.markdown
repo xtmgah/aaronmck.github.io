@@ -116,32 +116,40 @@ Before you start sending jobs out to the grid engine, it's good to get some defa
 
 Tell UGE what default queue you should dispatch jobs to (for us in the Shendure lab, this should be ravana.q:
 
-	-q <default.queue.name>
+	`-q <default.queue.name>`
 	
 Tell UGE to treat your executables as either scripts or binaries, usually a safe bet to set this to 'y':
-	-b y 
+
+	`-b y `
 	
 Start the job from the current directory (helps when you only specify relative paths like myfiles/thefileIwant.txt):
-	-cwd 
+
+	`-cwd `
 	
 be verbose, and dump out a lot of information on runs:
-	-V 
+
+	`-V `
 	
 merge the error output in with the normal output of a job. Generally as a newbie you want this set to yes (y) so you see all of your jobs output together:
-	-j y 
+
+	`-j y `
 	
 what conditions do you want to recieve an email for a = when the job is aborted or rescheduled, and e = send email at end of the job (b = beginning is the alternative):
-	-m ae 
+
+	`-m ae `
 	
 this is a lab specific thing, we only want redhat 6 machines by default:
-	-l rhel=6 
+
+	`-l rhel=6` 
 	
 where to send the emails to:
-	-M USERID@uw.edu 
+
+	`-M USERID@uw.edu `
 	
 where to put your output for both normal runs and errors:
+
 	-o /net/shendure/vol1/home/USERID/sge_logs/ 
-	-e /net/shendure/vol1/home/USERID/sge_logs/
+	-e /net/shendure/vol1/home/USERID/sge_logs/`
 
 together this looks like:
 
