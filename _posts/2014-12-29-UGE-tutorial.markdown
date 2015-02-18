@@ -210,6 +210,6 @@ Congrats your very first UGE jobs is out there running! We can keep checking on 
 
 ##### Further Steps
 
-There's a ton more to read up on.  You can learn about [job arrays](http://hpc.ucla.edu/hoffman2/computing/job_arrays.php), a way to run multiple linked jobs.  You can learn more about (interactive jobs)[http://hpc.ucla.edu/hoffman2/computing/sge_qrsh.php].  There's tons more to take advantage of.
+There's a ton more to read up on.  You can learn about [job arrays](http://hpc.ucla.edu/hoffman2/computing/job_arrays.php), a way to run multiple linked jobs.  You can learn more about [interactive nodes](http://hpc.ucla.edu/hoffman2/computing/sge_qrsh.php) and how to specify resources for those. 
 
 
