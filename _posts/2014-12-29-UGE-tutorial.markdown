@@ -5,15 +5,15 @@ date:   2014-12-29 14:56:10
 categories: farm compute UGE grid engine
 ---
 
-Sadly, there aren't a lot of clearly writen tutorials out there on Sun Grid Engine (SGE) or its cousins like UGE or OGE.  Although I make no promises about 'clearly writen',  hopefully you can come away from this mini-tutorial with a better understanding of what grid engines are designed for and some basic understanding of their usage.
+Sadly, there aren't a lot of clearly writen tutorials out there on Univa Grid Engine (UGE) or its cousins like SGE or OGE.  Although I make no promises about 'clearly writen',  hopefully you can come away from this mini-tutorial with a better understanding of what grid engines are designed for and some basic understanding of their usage.
 
 #### Who Cares?
 
-You.  Ok, more specificly, almost anyone who works in a computing environment.  It used to be that SGE (and related tools like LSF) were the domain of system adminstators and backend programmers, but this changed pretty rapidly (this is a good thing, you get access to new resources).  Now most academic labs have access to large clusters, and the expectation is that you'll use these resources fairly and appropriately.  Great! Except, that mean you have to learn how to do that, and that's the motivation behind the 'who cares' part: you, hopefully.  
+You.  Ok, more specificly, almost anyone who works in a computing environment.  It used to be that UGE (and related tools like LSF) were the domain of system adminstators and backend programmers, but this changed pretty rapidly (and this is a good thing, you get access to new resources).  Now most academic labs have access to large clusters, and the expectation is that you'll use these resources fairly and appropriately.  Great! Except, that means you'll have to learn how to do that, and that's the motivation behind the 'who cares' part: you, hopefully.  
 
 #### What are we going to cover?
 
-UGE can seem complicated, but like just about any computer system, you'll need to know about 2% of it to get your routine work done.  I'll try to focus on those 2% here, and mix in some background so that you know where to look for the next step.  Most importantly our goal is that you don't get yelled at for doing something dumb (really everyone's primary goal).  Lastly, some of the information will be specific to the lab I'm working in at the University of Washington, but for anyone else reading this: you can pass over that stuff or fill in the specifics for your setup.
+UGE can seem complicated, but like just about any computer system, you'll need to know about 2% of it to get routine work done.  I'll try to focus on those 2% here, and mix in some background so that you know where to look for the next step.  Some of this information will be specific to the lab I'm working in at the University of Washington, but for anyone else reading this: you can pass over that stuff or fill in the specifics for your setup.
 
 #### What are we not going to cover?
 
@@ -21,13 +21,15 @@ This is intended for people who want to *use* SGE/UGE and it won't cover things 
 
 #### Basics
 
-Why do we need SGE/UGE? Lets say your the IT person for a large department at a university. Everyone wants to run their analysis, preferably yesterday, and you need to buy a lot of 'compute' for them to run it on.  How do you manage this?  Back in the day everyone was bought a nice fast desktop, and everyone was happy.  Now people need tons of memory for some jobs, tons of processesors for other jobs, and tons of disk storage for others.  You could just buy one *enourmous* machine with lots of everything, but this is insanely expensive, and graduate students are prone to breaking even the most hardy of machine (ruining everyone else's work in the process).  
+Why was SGE/UGE created? Lets say your the IT person for a large department at a university. Everyone wants to run their analysis, preferably yesterday, and you need to buy a lot of 'compute' for them to run it on.  How do you manage this?  
 
-So you decide to buy a lot of cheaper machines, some with lots of memory, some with lots of processessors, and stick them on the network.  Problem solved!  But everyone complains because they don't know which machine to use, the machine they like is getting beaten up by 10 grad students because they all followed the same tutorial, and you have no way of knowing if the unsed machine is up and running or on fire in the back closet.  Booo.  You need some way of managing this: a way for people to specify what they need, and a system to route them to the right idle machine, and then to recover it when they're done.  Enter grid engines!
-and 
+Back in the day everyone was bought a nice fast desktop, and everyone was happy.  Now people need tons of memory for some jobs, tons of processors for other jobs, and tons of disk storage for others.  You could just buy one *enormous* machine with lots of everything, but this is insanely expensive, and graduate students are prone to breaking even the most hardy of machine (ruining everyone else's work in the process).  
+
+So you decide to buy a lot of cheaper machines, some with lots of memory, some with lots of processors, and stick them on the network.  Problem solved!  But everyone complains because they don't know which machine to use, the machine they like is getting beaten up by 10 grad students because they all followed the same tutorial, and you have no way of knowing if the unused machine is up and running or on fire in the back closet.  Booo.  You need some way of managing this: a way for people to specify what they need, and a system to route them to the right idle machine, and then to recover it when they're done.  Enter grid engines!
+
 The basic concept is this: **You tell a grid engine what to run, what resources it needs, and it takes care of the rest somewhere out in your cloud* of computers**
 
-*For our purposes, farm and cloud are interchangable: both mean a number of computers that we can't phyically see or touch, but are nice enough to run computational jobs for us.
+*For our purposes, farm and cloud are interchangeable: both mean a number of computers that we can't physically see or touch, but are nice enough to run computational jobs for us.
 
 #### Let's get started - what's going on our farm?
 
@@ -91,43 +93,43 @@ From the status messages you can see that SGE put our interactive job on the que
 
 ### Normal Jobs
 
-More often, you'll want to kick off a job that will run independently on the farm, with no supervision from you.  Just like an interactive sesssion, SGE will find a host for you and start the requested program with the arguments you provide.  The difference is that you won't watch this all happen: SGE takes you command, runs it, releases the machine when the program is done, and stores the command-line output you would of seen for you.  Let's start with something basic.
+More often, you'll want to kick off a job that will run independently on the farm, with no supervision from you.  Just like an interactive session, SGE will find a host for you and start the requested program with the arguments you provide.  The difference is that you won't watch this all happen: SGE takes you command, runs it, releases the machine when the program is done, and stores the command-line output you would of seen for you.  Let's start with something basic.
 
 ##### Before you start
 
-Before you start sending jobs out to the grid engine, it's good to get some default settings in place.  These are things that you don't want to have to specify everytime you run UGE because none of them should change regularly.  These settings get placed in a file in your unix home directory named *.sge_request*.  You should open that file and add at least some of the following lines.  Things you need to fill in are in brackets ( < ).  Ignore all the backticks in the following code, you can see what the whole file would look like below the examples:
+Before you start sending jobs out to the grid engine, it's good to get some default settings in place.  These are things that you don't want to have to specify every time you run UGE because none of them should change regularly.  These settings get placed in a file in your unix home directory named *.sge_request*.  You should open that file and add at least some of the following lines.  Things you need to fill in are in brackets ( < ).  Ignore all the backticks in the following code, you can see what the whole file would look like below the examples:
 
 Tell UGE what default queue you should dispatch jobs to (for us in the Shendure lab, this should be ravana.q:
 
-	`-q <default.queue.name>`
+	-q <default.queue.name>
 	
-Tell UGE to treat your executables as either scripts or binaries, usually a safe bet to set this to 'y':
+Tell UGE to treat your executable as either scripts or binaries, usually a safe bet to set this to 'y':
 
-	`-b y `
+	-b y 
 	
 Start the job from the current directory (helps when you only specify relative paths like myfiles/thefileIwant.txt):
 
-	`-cwd `
+	-cwd
 	
 be verbose, and dump out a lot of information on runs:
 
-	`-V `
+	-V
 	
 merge the error output in with the normal output of a job. Generally as a newbie you want this set to yes (y) so you see all of your jobs output together:
 
-	`-j y `
+	-j y
 	
-what conditions do you want to recieve an email for a = when the job is aborted or rescheduled, and e = send email at end of the job (b = beginning is the alternative):
+what conditions do you want to receive an email for a = when the job is aborted or rescheduled, and e = send email at end of the job (b = beginning is the alternative):
 
-	`-m ae `
+	-m ae 
 	
 this is a lab specific thing, we only want redhat 6 machines by default:
 
-	`-l rhel=6` 
+	-l rhel=6
 	
 where to send the emails to:
 
-	`-M USERID@uw.edu `
+	-M USERID@uw.edu
 	
 where to put your output for both normal runs and errors:
 
@@ -147,7 +149,7 @@ together this looks like:
 	-o /net/shendure/vol1/home/USERID/sge_logs/ 
 	-e /net/shendure/vol1/home/USERID/sge_logs/
 	
-Saved in the *.sge_request* file.  There are pleanty of other options you could request, you can find out more by running *man qsub* on your command line.
+Saved in the *.sge_request* file.  There are plenty of other options you could request, you can find out more by running *man qsub* on your command line.
 
 ##### Basic UGE script
 
@@ -176,7 +178,9 @@ This lets you see that the script runs without errors.  The grid engine will als
 
 ##### Running the basic script on UGE
 
-Ok, now we need to actually run it using the grid engine.  You dispatch jobs using the *qsub* command. You use this command as follows:
+Ok, now we need to actually run it using the grid engine.  You dispatch jobs using the *qsub* command. Let's put together a full command line.  First we need the `qsub` command.  Next we add the command `-shell y`, which tells qsub that we'd like to run our script within a shell on the remote machine.  This means that any environment we normally get on the command line is also setup for our script (including any tools we use).  
+
+We also want to specify the amount of memory we need.  To do this we use the `-l` option, in this case we're asking for 4 gigabytes of memmory with the `mfree=4g` command, and 4g of free virtual space with the `virtual_free=4g`.  Lastly we tell sge to run our script:
 
 <div class="shell-wrap">
   <p class="shell-top-bar">/Your/Local/Dir</p>
@@ -200,7 +204,8 @@ Our job is now out there, we should be able to see it using qstat:
   </ul>
 </div>
 	
-Again, the `r` mean it's running.  Congrats your very first UGE jobs is out there running!
-Many thanks, including:
-The terminal tag from [http://jumpstartlab.com](http://jumpstartlab.com/news/archives/2013/10/16/octopress-terminal-tag)
+Again, the `r` mean it's running.  Congrats your very first UGE jobs is out there running! We can keep checking on this job using the qstat command.  We can also go look at the output which we setup in our *.sge_request*, with the lines that look like `-o /net/shendure/vol1/home/USERID/sge_logs/`.  
+
+
+
 
