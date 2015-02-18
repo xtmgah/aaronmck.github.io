@@ -180,7 +180,7 @@ This lets you see that the script runs without errors.  The grid engine will als
 
 Ok, now we need to actually run it using the grid engine.  You dispatch jobs using the *qsub* command. Let's put together a full command line.  First we need the `qsub` command.  Next we add the command `-shell y`, which tells qsub that we'd like to run our script within a shell on the remote machine.  This means that any environment we normally get on the command line is also setup for our script (including any tools we use).  
 
-We also want to specify the amount of memory we need.  To do this we use the `-l` option, in this case we're asking for 4 gigabytes of memmory with the `mfree=4g` command, and 4g of free virtual space with the `virtual_free=4g`.  Lastly we tell sge to run our script:
+We also want to specify the amount of memory we need.  To do this we use the `-l` option, which tells UGE to reserve a specific amount of resources for our jobs.  In this case we're asking for 4 gigabytes of memmory with the `mfree=4g` command, and 4g of free virtual space with the `virtual_free=4g`.  Lastly we tell sge to run our script:
 
 <div class="shell-wrap">
   <p class="shell-top-bar">/Your/Local/Dir</p>
@@ -204,8 +204,12 @@ Our job is now out there, we should be able to see it using qstat:
   </ul>
 </div>
 	
-Again, the `r` mean it's running.  Congrats your very first UGE jobs is out there running! We can keep checking on this job using the qstat command.  We can also go look at the output which we setup in our *.sge_request*, with the lines that look like `-o /net/shendure/vol1/home/USERID/sge_logs/`.  
+Again, the `r` mean it's running.  If it says something different you can check the codes above.  
 
+Congrats your very first UGE jobs is out there running! We can keep checking on this job using the qstat command.  We can also go look at the output which we setup in our *.sge_request*, with the lines that look like `-o /net/shendure/vol1/home/USERID/sge_logs/`.  
 
+##### Further Steps
+
+There's a ton more to read up on.  You can learn about [job arrays](http://hpc.ucla.edu/hoffman2/computing/job_arrays.php), a way to run multiple linked jobs.  You can learn more about (interactive jobs)[http://hpc.ucla.edu/hoffman2/computing/sge_qrsh.php].  There's tons more to take advantage of.
 
 
