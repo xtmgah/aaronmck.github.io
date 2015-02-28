@@ -33,7 +33,7 @@ The basic concept is this: **You tell a grid engine what to run, what resources 
 
 #### Let's get started - what's going on our farm?
 
-So start a terminal window on your local machine (be it Windows, Mac, or Linux).  Now ssh into your remote machine of choice.  This should be a machine that can launch grid engine jobs.  If you don't know which machines on your network can do this, it's best to ask IT or whoever set up the server farm.  Ok, now my fake terminal window looks like this:
+So start a terminal window on your local machine (be it Windows, Mac, or Linux).  Now ssh into your remote machine of choice.  This should be a machine that can launch grid engine jobs.  If you don't know which machines on your network can do this, it's best to ask IT or whoever set up the server farm.  Ok, now my fake terminal window looks like this (*green is text you type, blue is output you'll see*):
 
 <div class="shell-wrap">
   <p class="shell-top-bar">/Your/Local/Dir</p>
