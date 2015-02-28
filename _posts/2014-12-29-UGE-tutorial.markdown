@@ -99,23 +99,23 @@ More often, you'll want to kick off a job that will run independently on the far
 
 Before you start sending jobs out to the grid engine, it's good to get some default settings in place.  These are things that you don't want to have to specify every time you run UGE because none of them should change regularly.  These settings get placed in a file in your unix home directory named *.sge_request*.  You should open that file and add at least some of the following lines.  Things you need to fill in are in brackets ( < ).  Ignore all the backticks in the following code, you can see what the whole file would look like below the examples:
 
-Tell UGE what default queue you should dispatch jobs to (for us in the Shendure lab, this should be ravana.q:
+Tell UGE what default queue you should dispatch jobs to (for us in the Shendure lab, this should be *ravana.q*):
 
 	-q <default.queue.name>
 	
-Tell UGE to treat your executable as either scripts or binaries, usually a safe bet to set this to 'y':
+Tell UGE to treat your executable as either scripts or binaries, usually a safe bet to set this to 'y', then UGE can treat your file as either a script (like the example) or an actual binary it should run:
 
 	-b y 
 	
-Start the job from the current directory (helps when you only specify relative paths like myfiles/thefileIwant.txt):
+Start the job from the current directory (helps when you only specify *relative* paths like myfiles/thefileIwant.txt, without the slash in front):
 
 	-cwd
 	
-be verbose, and dump out a lot of information on runs:
+be verbose, and dump out a lot of information on runs.  This can be helpful when things go wrong:
 
 	-V
 	
-merge the error output in with the normal output of a job. Generally as a newbie you want this set to yes (y) so you see all of your jobs output together:
+merge the error output in with the normal output of a job. Generally as a newbie you want this set to yes (y) so you see all of your jobs output together like you'd expect:
 
 	-j y
 	
@@ -123,11 +123,11 @@ what conditions do you want to receive an email for a = when the job is aborted 
 
 	-m ae 
 	
-this is a lab specific thing, we only want redhat 6 machines by default:
+this is a lab specific thing, we only want redhat 6 machines by default.  '-l' is a general resource option, so you're saying '-l' means I want to set a resource, and in this case we're setting rhel (redhat linix version) to '6':
 
 	-l rhel=6
 	
-where to send the emails to:
+where to send the emails to.  You should fill this in with your email address:
 
 	-M USERID@uw.edu
 	
@@ -153,7 +153,7 @@ Saved in the *.sge_request* file.  There are plenty of other options you could r
 
 ##### Basic UGE script
 
-So let's say we want to use one of the [Picard](http://broadinstitute.github.io/picard/) tools to convert a bam file we have back to fastq files.  It really doesn't matter what we run, we just need to make it into a script file.  Here's my example shell script file:
+So let's say we want to use one of the [Picard](http://broadinstitute.github.io/picard/) tools to convert a bam file we have back to fastq files.  It really doesn't matter what we run, we just need to make it into a script file.  You could be aligning files with BWA, running a R script, etc.  Here's my example shell script file:
 
 	# test_run.sh
 
@@ -170,7 +170,7 @@ It's great to have this in a script because you can test it just using your comm
   <ul class="shell-body">
     <li>sh test_script.sh
     <br><br>
-    <a style="color=red">your output here</a></li>
+    <a style="color=red">your output here...success?</a></li>
   </ul>
 </div>
 
