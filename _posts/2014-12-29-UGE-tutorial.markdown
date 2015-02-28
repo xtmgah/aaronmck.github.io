@@ -38,7 +38,7 @@ So start a terminal window on your local machine (be it Windows, Mac, or Linux).
 <div class="shell-wrap">
   <p class="shell-top-bar">/Your/Local/Dir</p>
   <ul class="shell-body">
-    <li>ssh shead<br>   ...<br>   ...<br><a style="color=red">Last login: Fri Dec 26 18:13:44 2014 from othermachine.gs.washington.edu</a></li>
+    <li>ssh shead<a style="color=red"><br>   ...<br>   ...<br>Last login: Fri Dec 26 18:13:44 2014 from othermachine.gs.washington.edu</a></li>
     </ul>
 </div>
 	
