@@ -200,7 +200,7 @@ Our job is now out there, we should be able to see it using qstat:
 <br><br>
     <a style="color=red">job-ID     prior   name       user         ....<br>
 -----------------------------------------------------<br>
-     19221 0.00000 test_scrip aaronmck     r    02/16/2015 12:09:07</a></li>
+     19221 0.00000 test_scrip yourUSERNAME     r    02/16/2015 12:09:07</a></li>
   </ul>
 </div>
 	
