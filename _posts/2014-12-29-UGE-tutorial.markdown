@@ -50,7 +50,7 @@ we'll use the **qstat** command to see *1)* if we can talk to the UGE farm *2)* 
   <p class="shell-top-bar">/Your/Local/Dir</p>
   <ul class="shell-body">
   <li>qstat<br><a style="color=red">
-    <li>job-ID     prior   name       user         state submit/start at     queue<br>
+    job-ID     prior   name       user         state submit/start at     queue<br>
 --------------------------------------------------------------<br>
 8103      18.37395 QLOGIN     fakeuser1    r     12/11/2014 16:58:18 ravana.q<br>
 8992      17.93886 QLOGIN     fakeuser2    r     12/12/2014 12:31:55 ravana.q<br>
